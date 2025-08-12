@@ -236,8 +236,8 @@ function Home() {
                 textTransform: "none",
               }}
               component="a"
-              href="/CV_Messaoudene_Mohamed.pdf"
-              download={"CV_Messaoudene_Mohamed.pdf"}
+              href="/my_resume.pdf"
+              download={"my_resume.pdf"}
               startIcon={
                 <motion.div
                   animate={isHovered ? { y: [4] } : { y: [4, -3, 6] }}
