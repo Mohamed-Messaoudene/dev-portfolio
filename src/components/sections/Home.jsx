@@ -270,7 +270,7 @@ function Home() {
         transition={{ duration: 0.6, ease: "easeInOut" }}
       >
         <img
-          src="../../../public/11436094_4707119.svg"
+          src="/11436094_4707119.svg"
           alt="developper illustrative image"
           width={"100%"}
         />
