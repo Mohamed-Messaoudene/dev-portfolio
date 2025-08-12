@@ -89,7 +89,7 @@ function AboutMe() {
                 justifyContent: { xs: "center", sm: "start" },
               }}
             >
-              {"I am Messaoudene Mohamed, a full-stack developer with expertise in various technologies, primarily the MERN stack. I am currently in my 5th and final year at National Higher School of Telecommunications and Information and Communication Technologies"
+              {"I am Messaoudene Mohamed, a full-stack developer with expertise in various technologies, primarily the MERN stack. I graduated in June 2025 as an ICT Engineer from the National Higher School of Telecommunications and Information and Communication Technologies."
                 .split(" ")
                 .map((word, wordIndex) => (
                   <Box
@@ -116,7 +116,6 @@ function AboutMe() {
                     <span>&nbsp;</span>
                   </Box>
                 ))}
-
               {/* Animating the Link */}
               <motion.a
                 href="https://www.ensttic.dz/"
@@ -158,7 +157,7 @@ function AboutMe() {
                       />
                     ),
                     label: "Age",
-                    value: "22",
+                    value: "23",
                   },
                   {
                     icon: (

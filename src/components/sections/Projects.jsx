@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { useState, useRef } from "react"
-import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer" // Import useInView from react-intersection-observer
+import { useState, useRef } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer"; // Import useInView from react-intersection-observer
 import {
   Card,
   CardContent,
@@ -14,45 +14,45 @@ import {
   useTheme,
   alpha,
   Container,
-} from "@mui/material"
-import { GitHub, Launch, SwipeRounded } from "@mui/icons-material"
-import CustomDevider from "../CustomDevider"
-import { projects } from "../../constants/index"
-
+} from "@mui/material";
+import { GitHub, Launch, SwipeRounded } from "@mui/icons-material";
+import CustomDevider from "../CustomDevider";
+import { projects } from "../../constants/index";
 
 export default function ProjectsSection() {
-  const scrollRef = useRef(null)
-  const [canScrollLeft, setCanScrollLeft] = useState(false)
-  const [canScrollRight, setCanScrollRight] = useState(true)
-  const [scrollPosition, setScrollPosition] = useState(0)
-  const theme = useTheme()
- 
+  const scrollRef = useRef(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const theme = useTheme();
+
   // Use useInView from react-intersection-observer
   const { ref, inView } = useInView({
     triggerOnce: true, // Trigger the animation only once
     threshold: 0.4, // Trigger when 40% of the section is in view
-  })
+  });
 
   // Update scroll state
   const updateScrollState = () => {
     if (scrollRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current
-      setCanScrollLeft(scrollLeft > 0)
-      setCanScrollRight(scrollLeft < scrollWidth - clientWidth-2)
-      setScrollPosition(scrollLeft)
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 2);
+      setScrollPosition(scrollLeft);
     }
-  }
+  };
 
   // Handle custom scrollbar click
   const handleScrollbarClick = (e) => {
     if (scrollRef.current) {
-      const { left, width } = e.currentTarget.getBoundingClientRect()
-      const clickPosition = e.clientX - left
-      const scrollWidth = scrollRef.current.scrollWidth - scrollRef.current.clientWidth
-      const scrollTo = (clickPosition / width) * scrollWidth
-      scrollRef.current.scrollTo({ left: scrollTo, behavior: "smooth" })
+      const { left, width } = e.currentTarget.getBoundingClientRect();
+      const clickPosition = e.clientX - left;
+      const scrollWidth =
+        scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
+      const scrollTo = (clickPosition / width) * scrollWidth;
+      scrollRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
     }
-  }
+  };
 
   return (
     <Container
@@ -72,7 +72,14 @@ export default function ProjectsSection() {
         transition={{ duration: 0.7, ease: "easeOut" }}
       >
         {/* Section heading */}
-        <Box sx={{ mb: { xs: 3, md: 5 }, display: "flex", alignItems: "center", flexDirection: "column" }}>
+        <Box
+          sx={{
+            mb: { xs: 3, md: 5 },
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
           <Typography
             variant="h4"
             sx={{
@@ -80,7 +87,8 @@ export default function ProjectsSection() {
               color: theme.palette.primary.text,
             }}
           >
-            My <span style={{ color: theme.palette.primary.main }}>Projects</span>
+            My{" "}
+            <span style={{ color: theme.palette.primary.main }}>Projects</span>
           </Typography>
           <CustomDevider />
           <Typography
@@ -137,18 +145,26 @@ export default function ProjectsSection() {
               transition: "opacity 0.3s ease",
             }}
           />
-          <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", mb: 2, gap: 1 }}>
           <Box
-            component={motion.div}
-            animate={{ x: [-5, 5, -5] }}
-            transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              mb: 2,
+              gap: 1,
+            }}
           >
-            <SwipeRounded fontSize="small" sx={{ color: "wheat" }} />
+            <Box
+              component={motion.div}
+              animate={{ x: [-5, 5, -5] }}
+              transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
+            >
+              <SwipeRounded fontSize="small" sx={{ color: "wheat" }} />
+            </Box>
+            <Typography variant="caption" color={theme.palette.primary.text}>
+              Swipe to explore projects
+            </Typography>
           </Box>
-          <Typography variant="caption" color={theme.palette.primary.text}>
-            Swipe to explore projects
-          </Typography>
-        </Box>
 
           {/* Scrollable projects container */}
           <Box
@@ -187,14 +203,18 @@ export default function ProjectsSection() {
                     lg: "calc(30% - 16px)",
                   },
                   minWidth: "270px",
-                  height: {xs:430,md:450},
+                  height: { xs: 430, md: 450 },
                   display: "flex",
                   flexDirection: "column",
                   borderRadius: "12px",
                   overflow: "hidden",
-                  boxShadow: `0 4px 12px ${alpha(theme.palette.common.black, 0.1)}`,
+                  boxShadow: `0 4px 12px ${alpha(
+                    theme.palette.common.black,
+                    0.1
+                  )}`,
                   flex: "0 0 auto",
-                  bgcolor: theme.palette.mode === "dark" ? "#333842" : "#f8f9fa",
+                  bgcolor:
+                    theme.palette.mode === "dark" ? "#333842" : "#f8f9fa",
                   position: "relative",
                   mx: { xs: "auto" },
                   transition: "all 0.4s ease",
@@ -219,7 +239,14 @@ export default function ProjectsSection() {
                   sx={{ transition: "transform 0.5s ease" }}
                 />
 
-                <CardContent sx={{ p: 2, flexGrow: 1, display: "flex", flexDirection: "column" }}>
+                <CardContent
+                  sx={{
+                    p: 2,
+                    flexGrow: 1,
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
                   <Typography
                     variant="h6"
                     component="h3"
@@ -238,7 +265,10 @@ export default function ProjectsSection() {
                     variant="body2"
                     sx={{
                       mb: 2,
-                      color: theme.palette.mode === "dark" ? "rgba(255,255,255,0.7)" : "rgba(0,0,0,0.6)",
+                      color:
+                        theme.palette.mode === "dark"
+                          ? "rgba(255,255,255,0.7)"
+                          : "rgba(0,0,0,0.6)",
                       fontSize: { xs: "0.7rem", md: "0.875rem" },
                       display: "-webkit-box",
                       WebkitLineClamp: 3,
@@ -256,7 +286,10 @@ export default function ProjectsSection() {
                         fontWeight: 600,
                         display: "block",
                         mb: 0.5,
-                        color: theme.palette.mode === "dark" ? "rgba(255,255,255,0.9)" : "rgba(0,0,0,0.8)",
+                        color:
+                          theme.palette.mode === "dark"
+                            ? "rgba(255,255,255,0.9)"
+                            : "rgba(0,0,0,0.8)",
                       }}
                     >
                       Technologies
@@ -269,11 +302,17 @@ export default function ProjectsSection() {
                           size="small"
                           sx={{
                             height: 20,
-                            fontSize: {xs:'0.5rem',md:"0.65rem"},
-                            background: alpha(project.color, theme.palette.mode === "dark" ? 0.2 : 0.1),
+                            fontSize: { xs: "0.5rem", md: "0.65rem" },
+                            background: alpha(
+                              project.color,
+                              theme.palette.mode === "dark" ? 0.2 : 0.1
+                            ),
                             border: `1px solid ${alpha(project.color, 0.3)}`,
                             mb: 0.5,
-                            color: theme.palette.mode === "dark" ? "#fff" : "inherit",
+                            color:
+                              theme.palette.mode === "dark"
+                                ? "#fff"
+                                : "inherit",
                           }}
                         />
                       ))}
@@ -281,7 +320,7 @@ export default function ProjectsSection() {
                   </Box>
 
                   <Box sx={{ display: "flex", gap: 1, mt: "auto" }}>
-                    <Button
+                   {project.githubUrl && (<Button
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -296,36 +335,44 @@ export default function ProjectsSection() {
                         transition: "all 0.3s ease",
                         "&:hover": {
                           transform: "translateY(-2px)",
-                          boxShadow: `0 4px 8px ${alpha(theme.palette.common.black, 0.1)}`,
+                          boxShadow: `0 4px 8px ${alpha(
+                            theme.palette.common.black,
+                            0.1
+                          )}`,
                         },
                       }}
                     >
                       Code
-                    </Button>
+                    </Button>)}
 
-                    {project.demoUrl && <Button
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      startIcon={<Launch fontSize="small" />}
-                      variant="contained"
-                      size="small"
-                      sx={{
-                        borderRadius: "6px",
-                        textTransform: "none",
-                        flex: 1,
-                        fontSize: "0.75rem",
-                        background: project.color,
-                        transition: "all 0.3s ease",
-                        "&:hover": {
-                          background: alpha(project.color, 0.8),
-                          transform: "translateY(-2px)",
-                          boxShadow: `0 4px 12px ${alpha(project.color, 0.3)}`,
-                        },
-                      }}
-                    >
-                      Demo
-                    </Button>}
+                    {project.demoUrl && (
+                      <Button
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        startIcon={<Launch fontSize="small" />}
+                        variant="contained"
+                        size="small"
+                        sx={{
+                          borderRadius: "6px",
+                          textTransform: "none",
+                          flex: 1,
+                          fontSize: "0.75rem",
+                          background: project.color,
+                          transition: "all 0.3s ease",
+                          "&:hover": {
+                            background: alpha(project.color, 0.8),
+                            transform: "translateY(-2px)",
+                            boxShadow: `0 4px 12px ${alpha(
+                              project.color,
+                              0.3
+                            )}`,
+                          },
+                        }}
+                      >
+                        Demo
+                      </Button>
+                    )}
                   </Box>
                 </CardContent>
               </Card>
@@ -348,7 +395,12 @@ export default function ProjectsSection() {
           >
             <Box
               sx={{
-                width: `${(scrollPosition / (scrollRef.current?.scrollWidth - scrollRef.current?.clientWidth)) * 100}%`,
+                width: `${
+                  (scrollPosition /
+                    (scrollRef.current?.scrollWidth -
+                      scrollRef.current?.clientWidth)) *
+                  100
+                }%`,
                 height: "100%",
                 backgroundColor: theme.palette.primary.main,
                 borderRadius: "4px",
@@ -362,5 +414,5 @@ export default function ProjectsSection() {
         </Box>
       </motion.section>
     </Container>
-  )
+  );
 }
