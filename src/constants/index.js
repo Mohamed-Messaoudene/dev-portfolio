@@ -3,7 +3,7 @@ export const projects = [
     id: 1,
     title: "ShareFiring Landing Page & Dashboard",
     description: "A freelance project delivering a modern landing page and an interactive dashboard for managing content and users. Built with React, Tailwind CSS, Inertia.js, Laravel, and MySQL.",
-    image: "/sharefiring.jpg",
+    image: "/sharefirng landing page.png",
     technologies: ["React", "Tailwind CSS", "Inertia.js", "Laravel", "MySQL"],
     githubUrl: null,
     demoUrl: "https://sharefiring.com/",
